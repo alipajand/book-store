@@ -11,12 +11,6 @@ module.exports = {
   pages: {
     index: {
       entry: [
-        'src/plugins/axios.js',
-        'src/plugins/globals.js',
-        'src/plugins/vue-bootstrap.js',
-        'src/plugins/vue-meta.js',
-        'src/plugins/vue-notifications.js',
-        'src/plugins/vuelidate.js',
         'src/main.js',
         'src/vue.js'
       ]
