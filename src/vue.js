@@ -16,11 +16,10 @@ window.vueApp = new Vue({
    * Check routes for first time
    */
   beforeCreate() {
-    /**
-     * Check for blocked or forbidden pages
-     */
-    const to = this.$route;
-    globalMethods.routerGuard(to, router);
+    const routerGuard = globalMethods.routerGuard(this.$route);
+    if (routerGuard) {
+      router.push({ name: 'home' });
+    }
   }
 }).$mount('#app');
 
@@ -28,7 +27,10 @@ window.vueApp = new Vue({
  * Check routes in route changed
  */
 router.beforeEach((to, from, next) => {
-  globalMethods.routerGuard(to, router);
+  const routerGuard = globalMethods.routerGuard(to);
+  if (routerGuard) {
+    router.push({ name: 'home' });
+  }
 
   next();
 });
