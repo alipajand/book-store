@@ -1,0 +1,42 @@
+//###### bold font elements ######//
+strong,
+b,
+th,
+.modal-title {
+  font-family: 'iranyekanBold', $font-name-regular, 'Tahoma' !important;
+}
+
+@for $ii from 1 through 3 {
+  .h#{$ii},
+  h#{$ii} {
+    font-family: 'iranyekanBold', $font-name-regular, 'Tahoma' !important;
+  }
+}
+
+.latin {
+  font-family: $font-name-roboto, $font-name-regular, 'Tahoma' !important;
+}
+
+.latin-fa {
+  font-family: $font-name-regular-en, $font-name-regular, 'Tahoma' !important;
+}
+
+//###### Font Importing ######//
+@mixin font-face-creator($fontName-app, $path, $fontName-path, $weight) {
+  @font-face {
+    font-style: normal;
+    font-weight: $weight;
+    font-display: fallback;
+    font-family: $fontName-app;
+    src: url('#{$path}/#{$fontName-path}.eot');
+    src: url('#{$path}/#{$fontName-path}.eot?#iefix') format('embedded-opentype'),
+    url('#{$path}/#{$fontName-path}.woff') format('woff'),
+    url('#{$path}/#{$fontName-path}.ttf') format('truetype'),
+    url('#{$path}/#{$fontName-path}.svg##{$fontName-path}') format('svg');
+  }
+}
+
+@include font-face-creator($font-name-roboto, $path, 'roboto', 'normal');
+@include font-face-creator($font-name-regular-en, $path, 'iranyekanwebregular', 'normal');
+@include font-face-creator($font-name-regular, $path, 'iranyekanwebregularfanum', 'normal');
+@include font-face-creator('iranyekanBold', $path, 'iranyekanwebboldfanum', 'bold');

@@ -1,0 +1,12 @@
+{
+  "status": "ok",
+  "name": "BSUP",
+  "short_name": "BSUP",
+  "display": "standalone",
+  "theme_color": "#E84691",
+  "start_url": "/",
+  "background_color": "#ffffff",
+  "gcm_user_visible_only": true,
+  "gcm_sender_id": "103953800507",
+  "prefer_related_applications": false
+}

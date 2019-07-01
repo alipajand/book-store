@@ -1,0 +1,37 @@
+﻿// Notify
+.notifications {
+  @media (max-width: map-get($grid-breakpoints, 'md')) {
+    #{$left}: 2px !important;
+    #{$right}: 2px !important;
+    width: calc(100% - 4px) !important;
+  }
+
+  .vue-notification {
+    text-align: #{$right};
+    border: none !important;
+    @include box-shadow($box-shadow-sm);
+
+    @media (max-width: map-get($grid-breakpoints, 'md')) {
+      text-align: center;
+    }
+
+    &.warn {
+      color: $white;
+      background: rgb(255, 187, 51);
+    }
+
+    &.danger {
+      color: $white;
+      background-color: #ff3547;
+    }
+
+    &.success {
+      color: $white;
+      background: rgb(0, 200, 81);
+    }
+
+    .notification-title {
+      font-size: 17px !important;
+    }
+  }
+}
