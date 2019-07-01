@@ -1,10 +1,3 @@
-@for $ii from 1 through 3 {
-  .h#{$ii},
-  h#{$ii} {
-    font-family: 'iranyekanBold', $font-name-regular, 'Tahoma' !important;
-  }
-}
-
 @mixin font-face-creator($fontName-app, $path, $fontName-path, $weight) {
   @font-face {
     font-style: normal;
