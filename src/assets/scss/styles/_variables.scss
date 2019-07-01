@@ -1,15 +1,3 @@
-$path:                      '/fonts';
-$fa-font-path:              $path;
-
-$font-name-roboto:          quote(roboto);
-$font-name-regular:         quote(iranYekan);
-$font-name-regular-en:      quote(iranYekanEn);
-$font-name-bold:            quote(iranYekanBold);
-
-$modal-radius:               10px;
-$notification-panel-width:  450px;
-$tooltip-margin-slider:     -7px;
-
-$navigation-header-height:   84px;
-$navBar-toggleable:         'lg';
-
+$path:                '/fonts';
+$fa-font-path:        $path;
+$font-name-roboto:    quote(roboto);

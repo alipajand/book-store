@@ -1,13 +1,12 @@
-﻿// Notify
-.notifications {
+﻿.notifications {
   @media (max-width: map-get($grid-breakpoints, 'md')) {
-    #{$left}: 2px !important;
-    #{$right}: 2px !important;
+    left: 2px !important;
+    right: 2px !important;
     width: calc(100% - 4px) !important;
   }
 
   .vue-notification {
-    text-align: #{$right};
+    text-align: right;
     border: none !important;
     @include box-shadow($box-shadow-sm);
 
@@ -17,17 +16,17 @@
 
     &.warn {
       color: $white;
-      background: rgb(255, 187, 51);
+      background: $warning;
     }
 
     &.danger {
       color: $white;
-      background-color: #ff3547;
+      background-color: $danger;
     }
 
     &.success {
       color: $white;
-      background: rgb(0, 200, 81);
+      background: $success;
     }
 
     .notification-title {
