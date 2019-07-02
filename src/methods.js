@@ -7,6 +7,28 @@ const routerGuard = (route) => {
   return route && (route.path.includes('/signUp') || route.path.includes('/login'));
 };
 
+/**
+ * calculate expiration date
+ */
+const isTokenExpire = () => {
+  const now = new Date();
+  const expirationDate = new Date(localStorage.getItem('exp'));
+  return now >= expirationDate;
+};
+
+/**
+ * getUrlParams
+ */
+const getUrlParams = () => {
+  const queryParams = {};
+  window.location.href.replace(/[#&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+    queryParams[key] = value;
+  });
+  return queryParams;
+};
+
 export default {
-  routerGuard
+  routerGuard,
+  isTokenExpire,
+  getUrlParams
 };

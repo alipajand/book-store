@@ -10909,11 +10909,6 @@ vue-notification@^1.3.16:
   resolved "https://registry.yarnpkg.com/vue-notification/-/vue-notification-1.3.16.tgz#b2eca3416a94a46e35aa2516710a0fcd2c8515ea"
   integrity sha512-ZL57GcyeAnJK5ItWWkZ3+wcf3OlLFs9WIukxXwJBSIzIXUlXXxXzeVkZrhUf3Q/FkbWWAYRmzKXXP742ZiyxOw==
 
-vue-notify@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/vue-notify/-/vue-notify-1.0.1.tgz#b870d773d0dc23d5631be6f0ea3430c1532321ce"
-  integrity sha1-uHDXc9DcI9VjG+bw6jQwwVMjIc4=
-
 vue-router@^3.0.3:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.0.6.tgz#2e4f0f9cbb0b96d0205ab2690cfe588935136ac3"

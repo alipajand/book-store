@@ -16,10 +16,17 @@ window.vueApp = new Vue({
    * Check routes for first time
    */
   beforeCreate() {
-    const routerGuard = globalMethods.routerGuard(this.$route);
-    if (routerGuard) {
+    const { access_token: accessToken, token_type: tokenType, expires_in: expiresIn } = globalMethods.getUrlParams();
+    if (accessToken) {
+      localStorage.setItem('exp', expiresIn);
+      this.$store.commit('auth/saveToken', tokenType + accessToken);
+    }
+
+    if (globalMethods.routerGuard(this.$route)) {
       router.push({ name: 'home' });
     }
+
+    this.$store.dispatch('auth/checkToken');
   }
 }).$mount('#app');
 
