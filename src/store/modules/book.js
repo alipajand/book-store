@@ -23,8 +23,8 @@ export default {
     async add({ dispatch }, body) {
       await services.privates.addBook(body);
     },
-    async update({ dispatch }, id) {
-      await services.privates.updateBook(id);
+    async update({ dispatch }, { id, body }) {
+      await services.privates.updateBook(id, body);
     },
     async delete({ dispatch }, id) {
       await services.privates.deleteBook(id);

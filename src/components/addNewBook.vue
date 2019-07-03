@@ -1,9 +1,6 @@
 <template>
   <b-card class="border-0">
     <b-form @submit.prevent="addNewBook()">
-      <legend class="card-in">
-        Add NEW BOOK
-      </legend>
       <b-form-group class="card-in">
         <b-form-input
           v-model="model.title"
@@ -55,6 +52,14 @@
 
 <script type="text/javascript">
   export default {
+    props: {
+      fillData: {
+        type: Object,
+        default: () => {
+          return {};
+        }
+      }
+    },
     data() {
       return {
         model: {
@@ -64,6 +69,16 @@
           publisher: '',
           cover_url: ''
         }
+      };
+    },
+    created() {
+      const { title, author, price, publisher, cover_url: coverUrl } = this.fillData;
+      this.model = {
+        title: title,
+        author: author,
+        price: price,
+        publisher: publisher,
+        cover_url: coverUrl
       };
     },
     methods: {

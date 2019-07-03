@@ -7,8 +7,8 @@ export default {
   getBookById: (id) => {
     return $axios({ method: 'GET', url: `books/${id}`, data: {} });
   },
-  updateBook: (id) => {
-    return $axios({ method: 'PATCH', url: `books/${id}`, data: {} });
+  updateBook: (id, body) => {
+    return $axios({ method: 'PATCH', url: `books/${id}`, data: body });
   },
   deleteBook: (id) => {
     return $axios({ method: 'DELETE', url: `books/${id}`, data: {} });

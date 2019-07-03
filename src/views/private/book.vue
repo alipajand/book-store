@@ -20,11 +20,14 @@
     </b-card>
     <b-collapse id="add-new-book"
                 v-model="flags.showAddNewBookPanel">
+      <h2>
+        Add NEW BOOK
+      </h2>
       <add-new-book-component v-on:bookAdded="getAllBooks()"></add-new-book-component>
     </b-collapse>
     <hr>
     <b-row class="justify-content-center mt-3">
-      <b-col lg="9">
+      <b-col lg="6" md="9">
         <b-form @submit.prevent="search()">
           <b-input-group>
             <b-button slot="append"
@@ -40,7 +43,7 @@
                           :autofocus="true"
                           @keyup="search()"
                           v-model="model.searchText"
-                          placeholder="search every thing">
+                          placeholder="search everything">
             </b-form-input>
           </b-input-group>
         </b-form>
@@ -129,17 +132,24 @@
     </template>
 
     <b-modal title="Find your information"
-             ref="bookDetail">
+             ref="bookDetail"
+             @hide="resetModal()">
       {{data.modal}}
     </b-modal>
     <b-modal title="Edit your book"
              ref="bookEdit"
-             v-on:ok="updateBook()">
-      {{data.modal}}
+             @hide="resetModal()">
+      <h2 v-if="data.modal">
+        Edit BOOK {{data.modal.title}}
+      </h2>
+      <add-new-book-component @updateBook="updateBook"
+                              :fillData="data.modal">
+      </add-new-book-component>
     </b-modal>
     <b-modal title="Confirmation"
              ref="bookDelete"
-             v-on:ok="deleteBook()">
+             @ok="deleteBook()"
+             @hide="resetModal()">
       Are sure to delete this book?
     </b-modal>
   </div>
@@ -237,9 +247,13 @@
         const response = await this.$store.dispatch('book/bookInfo', book.id);
         this.data.modal = response.data.data;
       },
-      async updateBook() {
+      async updateBook(event) {
         try {
-          await this.$store.dispatch('book/update', this.data.modal.id);
+          const body = {
+            id: this.data.modal.id,
+            body: event
+          };
+          await this.$store.dispatch('book/update', body);
           this.getAllBooks(1);
 
           this.$notify({
@@ -274,12 +288,16 @@
         }
       },
 
+      resetModal() {
+        this.data.modal = null;
+      },
+
       showDetailModal(book) {
         this.$refs['bookDetail'].show();
         this.getBookInfo(book);
       },
       showEditModal(book) {
-        this.$refs['bookDetail'].show();
+        this.$refs['bookEdit'].show();
         this.getBookInfo(book);
       },
       showDeleteModal(book) {
