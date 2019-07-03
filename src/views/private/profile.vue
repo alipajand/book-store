@@ -156,15 +156,6 @@
 
         this.flags.changePassword = false;
         this.flags.confirmationPassword = false;
-      },
-      resetData() {
-        this.model = {
-          name: '',
-          email: '',
-          password: '',
-          current_password: '',
-          password_confirmation: ''
-        };
       }
     }
   };
