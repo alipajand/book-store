@@ -1,4 +1,12 @@
 /**
+ * Get token from storage
+ * @returns {string}
+ */
+const getToken = () => {
+  return localStorage.getItem('token');
+};
+
+/**
  * Check the block pages to redirect to appropriate pages
  * @param route
  * @returns {boolean}
@@ -28,6 +36,7 @@ const getUrlParams = () => {
 };
 
 export default {
+  getToken,
   routerGuard,
   isTokenExpire,
   getUrlParams

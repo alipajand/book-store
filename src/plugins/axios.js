@@ -1,4 +1,5 @@
 import axios from 'axios';
+import globalMethods from '../methods';
 
 axios.defaults.headers.common['Accept'] = 'application/json';
 axios.defaults.baseURL = 'http://hiring.bsup.tk/api/';
@@ -10,8 +11,8 @@ axios.interceptors.request.use(config => {
   /**
    * check for sending a token in service or not
    */
-  if (!config.headers.sendToken) {
-    config.headers.Authorization = localStorage.getItem('token');
+  if (config.headers.sendToken !== false) {
+    config.headers.Authorization = globalMethods.getToken();
   }
   delete config.headers['sendToken'];
   return config;

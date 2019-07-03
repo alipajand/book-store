@@ -30,7 +30,7 @@ export default {
   // -----------------------------------------------------------------
   actions: {
     checkToken({ commit, dispatch }) {
-      if (localStorage.getItem('token') && !globalMethods.isTokenExpire()) {
+      if (globalMethods.getToken() && !globalMethods.isTokenExpire()) {
         commit('login');
       } else {
         dispatch('resetToken');

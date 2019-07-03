@@ -12,10 +12,7 @@ export default {
     return $axios({
       method: 'POST',
       url: 'logout',
-      data: {},
-      headers: {
-        sendToken: false
-      }
+      data: {}
     });
   }
 };

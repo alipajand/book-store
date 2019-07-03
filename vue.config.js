@@ -4,7 +4,7 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin');
 module.exports = {
   devServer: {
     disableHostCheck: true,
-    proxy: 'http://localhost:4000'
+    proxy: 'http://hiring.bsup.tk/'
   },
   filenameHashing: process.env.NODE_ENV !== 'production',
   productionSourceMap: process.env.NODE_ENV !== 'production',

@@ -1,6 +1,6 @@
-import Index from '../views/Index';
-import ErrorPage from '../views/pages/error';
-import HomeComponent from '../views/pages/home';
+import Index from '../views/index';
+import ErrorPage from '../views/shared/error';
+import HomeComponent from '../views/shared/home';
 
 export default {
   routes: () => {
@@ -17,17 +17,17 @@ export default {
             name: 'home',
             path: '',
             component: HomeComponent
+          },
+          {
+            name: 'error',
+            path: 'error/:id',
+            component: ErrorPage
           }
         ]
       },
       {
         path: '/home',
         redirect: { name: 'home' }
-      },
-      {
-        name: 'error',
-        path: '/error/:id',
-        component: ErrorPage
       },
 
       /**
