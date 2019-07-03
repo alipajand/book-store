@@ -5,9 +5,9 @@
         Welcome to Book City!
       </strong>
     </h1>
-    <h3>
+    <h1>
       Join Us to use all features for free
-    </h3>
+    </h1>
     <div class="my-5">
       <b-button size="lg"
                 @click="signUp"
@@ -17,18 +17,25 @@
       <b-button size="lg"
                 :to="{name: 'books'}"
                 v-else>
-        Go In
+        {{ userInfo.name }} GO IN
       </b-button>
     </div>
   </div>
 </template>
 
 <script type="text/javascript">
+  import { mapGetters } from 'vuex';
+
   export default {
     data() {
       return {
         userWin: {}
       };
+    },
+    computed: {
+      ...mapGetters({
+        userInfo: 'user/get'
+      })
     },
     methods: {
       signUp() {

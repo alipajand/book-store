@@ -25,8 +25,7 @@ export default {
     async get({ commit }) {
       try {
         const response = await services.shared.getUserInfo();
-        console.log(response);
-        commit('save', response.data);
+        commit('save', response.data.data);
       } catch (e) {
       }
     },

@@ -11,6 +11,8 @@ module.exports = {
   pages: {
     index: {
       entry: [
+        'src/mixins/index.js',
+        'src/filters/index.js',
         'src/main.js',
         'src/vue.js'
       ]
