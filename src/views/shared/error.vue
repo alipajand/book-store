@@ -1,6 +1,6 @@
 <template>
   <b-container class="my-5 error-page px-md-0 px-4">
-    <b-row class="justify-content-center py-5">
+    <b-row class="justify-content-center">
       <b-col cols="12" lg="6">
         <h1 class="text-center error-code text-primary m-0">
           {{$route.params.id}}
@@ -8,9 +8,8 @@
         <h1 class="text-center">
           {{errorTitle}}
         </h1>
-        <hr>
-        <div class="text-center mt-4">
-          <b-link v-bind:to="{name: 'home'}">
+        <div class="text-center mt-2">
+          <b-link :to="{name: 'home'}">
             Back to home
           </b-link>
         </div>
