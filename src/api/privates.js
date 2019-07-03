@@ -11,9 +11,9 @@ export default {
     return $axios({ method: 'PATCH', url: `books/${id}`, data: {} });
   },
   deleteBook: (id) => {
-    return $axios({ method: 'DELETE ', url: `books/${id}`, data: {} });
+    return $axios({ method: 'DELETE', url: `books/${id}`, data: {} });
   },
   addBook: (body) => {
-    return $axios({ method: 'POST ', url: 'books/', data: body });
+    return $axios({ method: 'POST', url: 'books/', data: body });
   }
 };

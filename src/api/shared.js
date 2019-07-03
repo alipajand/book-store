@@ -8,7 +8,7 @@ export default {
     return $axios({ method: 'PATCH', url: 'user/', data: {} });
   },
   deleteUser: () => {
-    return $axios({ method: 'DELETE ', url: 'user/', data: {} });
+    return $axios({ method: 'DELETE', url: 'user/', data: {} });
   },
 
   /**

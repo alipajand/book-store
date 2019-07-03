@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="info" class="py-2">
+    <b-navbar toggleable="lg" type="dark" variant="primary" class="py-2">
       <b-container>
         <b-navbar-brand :to="{name: 'home'}">BSUP</b-navbar-brand>
 

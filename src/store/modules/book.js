@@ -19,7 +19,6 @@ export default {
     },
     async add({ dispatch }, body) {
       await services.privates.addBook(body);
-      await dispatch('get');
     },
     async update({ dispatch }, id) {
       await services.privates.updateBook(id);
