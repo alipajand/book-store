@@ -6,13 +6,8 @@
   }
 
   .vue-notification {
-    text-align: right;
     border: none !important;
-    @include box-shadow($box-shadow-sm);
-
-    @media (max-width: map-get($grid-breakpoints, 'md')) {
-      text-align: center;
-    }
+   @include box-shadow($box-shadow-sm);
 
     &.warn {
       color: $white;

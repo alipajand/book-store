@@ -17,16 +17,17 @@ export default {
     get(context, filters) {
       return services.privates.getBookList(filters);
     },
+    bookInfo(context, id) {
+      return services.privates.getBookById(id);
+    },
     async add({ dispatch }, body) {
       await services.privates.addBook(body);
     },
     async update({ dispatch }, id) {
       await services.privates.updateBook(id);
-      await dispatch('get');
     },
     async delete({ dispatch }, id) {
       await services.privates.deleteBook(id);
-      await dispatch('get');
     }
   }
 };

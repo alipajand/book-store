@@ -1,6 +1,6 @@
 <template>
   <b-card class="border-0">
-    <b-form v-on:submit.prevent="addNewBook()">
+    <b-form @submit.prevent="addNewBook()">
       <legend class="card-in">
         Add NEW BOOK
       </legend>
@@ -72,19 +72,44 @@
           const body = this.model;
           await this.$store.dispatch('book/add', body);
           this.$emit('bookAdded');
+          this.resetModel();
 
           this.$notify({
             group: 'axios',
             type: 'success',
             text: 'Congratulations! Your book successfully added!'
           });
-        } catch (e) {
-          this.$notify({
-            group: 'axios',
-            type: 'danger',
-            text: 'There is some problems here! please try again...'
-          });
+        } catch (error) {
+          const errorMessage = error.response;
+          if (errorMessage) {
+            for (const i in errorMessage.data.errors) {
+              if (errorMessage.data.errors.hasOwnProperty(i)) {
+                errorMessage.data.errors[i].map(item => {
+                  this.$notify({
+                    group: 'axios',
+                    type: 'danger',
+                    text: item
+                  });
+                });
+              }
+            }
+          } else {
+            this.$notify({
+              group: 'axios',
+              type: 'danger',
+              text: 'There is some problems here! please try again...'
+            });
+          }
         }
+      },
+      resetModel() {
+        this.model = {
+          title: '',
+          author: '',
+          price: '',
+          publisher: '',
+          cover_url: ''
+        };
       }
     }
   };
