@@ -1,4 +1,5 @@
 import globalMethods from '../../methods';
+import services from '../../api';
 
 export default {
   namespaced: true,
@@ -34,6 +35,10 @@ export default {
       } else {
         dispatch('resetToken');
       }
+    },
+    async logout({ dispatch }) {
+      await services.shared.logout();
+      dispatch('resetToken');
     },
     resetToken({ commit }) {
       commit('logout');
