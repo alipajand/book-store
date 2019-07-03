@@ -1,4 +1,4 @@
-# bsup
+# BSUP vuejs sample project with vuex & axios
 
 ## Project setup
 ```
