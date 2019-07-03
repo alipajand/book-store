@@ -13,17 +13,18 @@
           <b-form-input required
                         type="email"
                         v-model="model.email"
+                        @keyup="flags.confirmationPassword = true"
                         placeholder="Enter your email">
           </b-form-input>
         </b-form-group>
+        <b-form-group v-if="flags.changePassword || flags.confirmationPassword">
+          <b-form-input required
+                        type="password"
+                        v-model="model.password"
+                        placeholder="Enter your current password">
+          </b-form-input>
+        </b-form-group>
         <template v-if="flags.changePassword">
-          <b-form-group>
-            <b-form-input required
-                          type="password"
-                          v-model="model.password"
-                          placeholder="Enter your current password">
-            </b-form-input>
-          </b-form-group>
           <b-form-group>
             <b-form-input required
                           type="password"
@@ -44,7 +45,8 @@
           <b-col sm="auto">
             <b-button variant="success"
                       type="submit"
-            class="px-4">
+                      class="px-4"
+                      :disabled="flags.loading">
               Update info
             </b-button>
             <b-button class="ml-2 px-3"
@@ -57,7 +59,8 @@
             <b-button class="mt-sm-0 mt-5"
                       variant="danger"
                       block
-                      v-b-modal.deleteModal>
+                      v-b-modal.deleteModal
+                      :disabled="flags.loading">
               Delete Me!
             </b-button>
           </b-col>
@@ -78,7 +81,8 @@
     data() {
       return {
         flags: {
-          changePassword: false
+          changePassword: false,
+          confirmationPassword: false
         },
         model: {
           name: '',
@@ -91,13 +95,49 @@
     },
     created() {
       this.fillModel();
+
+      /**
+       * ready for updating
+       */
+      this.$store.watch((state, getters) => getters['user/get'], () => {
+          this.fillModel();
+        }
+      );
     },
     methods: {
       async updateInfo() {
-        const body = this.model;
+        const { email } = this.$store.getters['user/get'];
+        let body = {
+          name: this.model.name,
+          email: this.model.email
+        };
+        if (this.flags.changePassword) {
+          body = this.model;
+        } else if (this.model.email === email) {
+          body = {
+            name: this.model.name,
+            email: this.model.email
+          };
+        } else if (this.model.password === '') {
+          this.flags.confirmationPassword = true;
+
+          this.$notify({
+            type: 'danger',
+            text: 'Please enter your password!'
+          });
+          return;
+        }
+
+        this.flags.loading = true;
         await this.$store.dispatch('user/update', body);
         await this.$store.dispatch('user/get');
+        this.flags.loading = false;
+
         this.fillModel();
+        this.$notify({
+          type: 'success',
+          text: 'Your info is updated!'
+        });
       },
       async deleteUser() {
         await this.$store.dispatch('user/delete');
@@ -113,6 +153,9 @@
           current_password: currentPassword,
           password_confirmation: passwordConfirmation
         };
+
+        this.flags.changePassword = false;
+        this.flags.confirmationPassword = false;
       },
       resetData() {
         this.model = {
