@@ -19,7 +19,7 @@ window.vueApp = new Vue({
     const { access_token: accessToken, token_type: tokenType, expires_in: expiresIn } = globalMethods.getUrlParams();
     if (accessToken) {
       localStorage.setItem('exp', expiresIn);
-      this.$store.commit('auth/saveToken', tokenType + accessToken);
+      this.$store.commit('auth/saveToken', `${tokenType} ${accessToken}`);
     }
 
     if (globalMethods.routerGuard(this.$route)) {
@@ -27,6 +27,10 @@ window.vueApp = new Vue({
     }
 
     this.$store.dispatch('auth/checkToken');
+
+    window.onfocus = () => {
+      this.$store.dispatch('auth/checkToken');
+    };
   }
 }).$mount('#app');
 

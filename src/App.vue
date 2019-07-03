@@ -35,5 +35,9 @@
 </template>
 
 <script type="text/javascript">
-  export default {};
+  export default {
+    async created() {
+      await this.$store.dispatch('user/get');
+    }
+  };
 </script>

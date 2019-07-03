@@ -1,7 +1,6 @@
-import Index from '../views/public/Index';
-import ErrorPage from '../views/public/pages/error';
-import HomeComponent from '../views/public/pages/home';
-import LoginComponent from '../views/public/pages/login';
+import Index from '../views/Index';
+import ErrorPage from '../views/pages/error';
+import HomeComponent from '../views/pages/home';
 
 export default {
   routes: () => {
@@ -24,12 +23,6 @@ export default {
       {
         path: '/home',
         redirect: { name: 'home' }
-      },
-      {
-        props: true,
-        name: 'login',
-        path: '/login',
-        component: LoginComponent
       },
       {
         name: 'error',
