@@ -103,7 +103,6 @@
           this.resetModel();
 
           this.$notify({
-            group: 'axios',
             type: 'success',
             text: 'Congratulations! Your book successfully added!'
           });
@@ -114,7 +113,6 @@
               if (errorMessage.data.errors.hasOwnProperty(i)) {
                 errorMessage.data.errors[i].map(item => {
                   this.$notify({
-                    group: 'axios',
                     type: 'danger',
                     text: item
                   });
@@ -123,7 +121,6 @@
             }
           } else {
             this.$notify({
-              group: 'axios',
               type: 'danger',
               text: 'There is some problems here! please try again...'
             });

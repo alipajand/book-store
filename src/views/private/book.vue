@@ -133,8 +133,25 @@
 
     <b-modal title="Find your information"
              ref="bookDetail"
+             ok-only
              @hide="resetModal()">
-      {{data.modal}}
+      <template v-if="data.modal">
+        <h3 class="mb-3">
+          {{data.modal.title}}
+        </h3>
+        <p>
+          Author: {{ data.modal.author }}
+        </p>
+        <p class="mb-3">
+          Publisher: {{ data.modal.publisher }}
+        </p>
+        <p>
+          Price:
+          <span class="large text-success">
+          {{ data.modal.price }} $
+          </span>
+        </p>
+      </template>
     </b-modal>
     <b-modal ref="bookEdit"
              hide-footer
@@ -262,13 +279,11 @@
           this.$refs['bookEdit'].hide();
 
           this.$notify({
-            group: 'axios',
             type: 'success',
             text: 'Your book is updated!'
           });
         } catch (e) {
           this.$notify({
-            group: 'axios',
             type: 'danger',
             text: 'There is some problems here! please try again...'
           });
@@ -280,13 +295,11 @@
           this.getAllBooks(1);
 
           this.$notify({
-            group: 'axios',
             type: 'success',
             text: 'Your book is deleted!'
           });
         } catch (e) {
           this.$notify({
-            group: 'axios',
             type: 'danger',
             text: 'There is some problems here! please try again...'
           });

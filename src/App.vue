@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view v-bind:key="$route.fullPath"/>
-    <notifications group="axios" position="center right" v-bind:speed="1000" v-bind:duration="7000"></notifications>
+    <notifications position="center right" v-bind:duration="7000"/>
   </div>
 </template>
 
