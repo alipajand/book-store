@@ -136,14 +136,18 @@
              @hide="resetModal()">
       {{data.modal}}
     </b-modal>
-    <b-modal title="Edit your book"
-             ref="bookEdit"
+    <b-modal ref="bookEdit"
+             hide-footer
              @hide="resetModal()">
-      <h2 v-if="data.modal">
-        Edit BOOK {{data.modal.title}}
-      </h2>
+      <template slot="modal-title">
+        Edit your book
+        <span v-if="data.modal">
+          {{data.modal.title}}
+        </span>
+      </template>
       <add-new-book-component @updateBook="updateBook"
-                              :fillData="data.modal">
+                              :fillData="data.modal"
+                              v-if="data.modal">
       </add-new-book-component>
     </b-modal>
     <b-modal title="Confirmation"
@@ -255,6 +259,7 @@
           };
           await this.$store.dispatch('book/update', body);
           this.getAllBooks(1);
+          this.$refs['bookEdit'].hide();
 
           this.$notify({
             group: 'axios',

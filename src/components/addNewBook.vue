@@ -41,10 +41,18 @@
           placeholder="Enter cover url">
         </b-form-input>
       </b-form-group>
+      <hr>
       <b-button variant="success"
                 type="submit"
-                class="card-in">
-        Add this book
+                class="card-in"
+                v-if="!fillData">
+        Save the book
+      </b-button>
+      <b-button variant="success"
+                type="submit"
+                class="card-in"
+                v-else>
+        Update the book
       </b-button>
     </b-form>
   </b-card>
@@ -54,10 +62,7 @@
   export default {
     props: {
       fillData: {
-        type: Object,
-        default: () => {
-          return {};
-        }
+        type: Object
       }
     },
     data() {
@@ -72,6 +77,9 @@
       };
     },
     created() {
+      if (!this.fillData) {
+        return;
+      }
       const { title, author, price, publisher, cover_url: coverUrl } = this.fillData;
       this.model = {
         title: title,
@@ -83,6 +91,11 @@
     },
     methods: {
       async addNewBook() {
+        if (this.fillData) {
+          this.$emit('updateBook', this.model);
+          return;
+        }
+
         try {
           const body = this.model;
           await this.$store.dispatch('book/add', body);
