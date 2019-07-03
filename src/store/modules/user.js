@@ -30,9 +30,9 @@ export default {
         console.log(e);
       }
     },
-    async update({ commit, dispatch }) {
+    async update({ commit }, body) {
       try {
-        const response = await services.shared.updateUser();
+        const response = await services.shared.updateUser(body);
         commit('save', response.data.data);
       } catch (e) {
         console.log(e);

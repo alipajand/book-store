@@ -84,11 +84,13 @@
                  blank-color="#ccc"
                  width="110"
                  height="110"
-                 class="rounded">
+                 class="rounded"
+                 @click="showDetailModal(book)">
           </b-img>
           <b-row class="justify-content-between">
             <b-col cols="auto">
-              <h5 class="mt-0">
+              <h5 class="mt-0"
+                  @click="showDetailModal(book)">
                 {{book.title}}
               </h5>
               <p class="m-0">
@@ -101,7 +103,8 @@
                 {{ book.price }} $
               </p>
             </b-col>
-            <b-col cols="auto">
+            <b-col cols="auto"
+                   class="mt-sm-0 mt-3">
               <b-button-group>
                 <b-button @click="showDetailModal(book)">
                   <i class="fas fa-info"></i>
@@ -169,9 +172,10 @@
     </b-modal>
     <b-modal title="Confirmation"
              ref="bookDelete"
+             ok-variant="danger"
              @ok="deleteBook()"
              @hide="resetModal()">
-      Are sure to delete this book?
+      Are sure you want to delete this book?
     </b-modal>
   </div>
 </template>

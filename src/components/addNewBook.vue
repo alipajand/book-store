@@ -1,56 +1,49 @@
 <template>
   <b-card class="border-0">
     <b-form @submit.prevent="addNewBook()">
-      <b-form-group class="card-in">
-        <b-form-input
-          v-model="model.title"
-          type="text"
-          required
-          placeholder="Enter book title">
+      <b-form-group>
+        <b-form-input required
+                      type="text"
+                      v-model="model.title"
+                      placeholder="Enter book title">
         </b-form-input>
       </b-form-group>
-      <b-form-group class="card-in">
-        <b-form-input
-          v-model="model.author"
-          type="text"
-          required
-          placeholder="Enter book author">
+      <b-form-group>
+        <b-form-input required
+                      type="text"
+                      v-model="model.author"
+                      placeholder="Enter book author">
         </b-form-input>
       </b-form-group>
-      <b-form-group class="card-in">
-        <b-form-input
-          v-model="model.price"
-          type="number"
-          required
-          placeholder="Enter price">
+      <b-form-group>
+        <b-form-input required
+                      type="number"
+                      v-model="model.price"
+                      placeholder="Enter price">
         </b-form-input>
       </b-form-group>
-      <b-form-group class="card-in">
-        <b-form-input
-          v-model="model.publisher"
-          type="text"
-          required
-          placeholder="Enter book publisher">
+      <b-form-group>
+        <b-form-input required
+                      type="text"
+                      v-model="model.publisher"
+                      placeholder="Enter book publisher">
         </b-form-input>
       </b-form-group>
-      <b-form-group class="card-in">
-        <b-form-input
-          v-model="model.cover_url"
-          type="url"
-          required
-          placeholder="Enter cover url">
+      <b-form-group>
+        <b-form-input required
+                      type="url"
+                      v-model="model.cover_url"
+                      placeholder="Enter cover url">
         </b-form-input>
       </b-form-group>
       <hr>
       <b-button variant="success"
                 type="submit"
-                class="card-in"
                 v-if="!fillData">
         Save the book
       </b-button>
       <b-button variant="success"
                 type="submit"
-                class="card-in"
                 v-else>
         Update the book
       </b-button>
