@@ -1,5 +1,6 @@
 import Index from '../views/private/index';
 import Book from '../views/private/book';
+import Profile from '../views/private/profile';
 
 import router from './index';
 import globalMethods from '../methods';
@@ -31,6 +32,11 @@ export default {
             name: 'books',
             path: 'books',
             component: Book
+          },
+          {
+            name: 'profile',
+            path: 'profile',
+            component: Profile
           }
         ]
       }

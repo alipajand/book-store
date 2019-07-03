@@ -157,7 +157,7 @@
              hide-footer
              @hide="resetModal()">
       <template slot="modal-title">
-        Edit your book
+        Edit book:
         <span v-if="data.modal">
           {{data.modal.title}}
         </span>
