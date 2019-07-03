@@ -1,18 +1,28 @@
 import Index from '../views/index';
 import ErrorPage from '../views/shared/error';
 import HomeComponent from '../views/shared/home';
+import Private from './private';
+
+const routes = [];
+Private.routes().map(item => {
+  routes.push(item);
+});
 
 export default {
   routes: () => {
     return [
       /**
-       * Share routes
+       * Shared routes
        */
       {
         path: '/',
         component: Index,
         redirect: { name: 'home' },
         children: [
+          /**
+           * private routes
+           */
+          ...routes,
           {
             name: 'home',
             path: '',

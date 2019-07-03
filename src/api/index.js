@@ -1,5 +1,7 @@
-import shared from './_shared';
+import shared from './shared';
+import privates from './privates';
 
 export default {
-  shared: shared
+  shared,
+  privates
 };

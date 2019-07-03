@@ -27,11 +27,24 @@ export default {
         const response = await services.shared.getUserInfo();
         commit('save', response.data.data);
       } catch (e) {
+        console.log(e);
       }
     },
-    update({ commit, dispatch }) {
+    async update({ commit, dispatch }) {
+      try {
+        const response = await services.shared.updateUser();
+        commit('save', response.data.data);
+      } catch (e) {
+        console.log(e);
+      }
     },
-    delete({ commit, dispatch }) {
+    async delete({ commit, dispatch }) {
+      try {
+        const response = await services.shared.deleteUser();
+        commit('save', response.data.data);
+      } catch (e) {
+        console.log(e);
+      }
     }
   }
 };

@@ -1,32 +1,33 @@
+import services from '../../api';
+
 export default {
   namespaced: true,
 
   // -----------------------------------------------------------------
-  state: {
-    books: []
-  },
+  state: {},
 
   // -----------------------------------------------------------------
-  getters: {
-    get: state => state.books
-  },
+  getters: {},
 
   // -----------------------------------------------------------------
-  mutations: {
-    save: (state, data) => {
-      state.books = data;
-    }
-  },
+  mutations: {},
 
   // -----------------------------------------------------------------
   actions: {
-    get({ commit, dispatch }) {
+    get(context, filters) {
+      return services.privates.getBookList(filters);
     },
-    add({ commit, dispatch }) {
+    async add({ dispatch }, body) {
+      await services.privates.addBook(body);
+      await dispatch('get');
     },
-    update({ commit, dispatch }) {
+    async update({ dispatch }, id) {
+      await services.privates.updateBook(id);
+      await dispatch('get');
     },
-    delete({ commit, dispatch }) {
+    async delete({ dispatch }, id) {
+      await services.privates.deleteBook(id);
+      await dispatch('get');
     }
   }
 };
