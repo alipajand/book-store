@@ -23,6 +23,10 @@ export default {
            * private routes
            */
           ...routes,
+
+          /**
+           * shared urls
+           */
           {
             name: 'home',
             path: '',
@@ -35,6 +39,10 @@ export default {
           }
         ]
       },
+
+      /**
+       * redirect home route to /
+       */
       {
         path: '/home',
         redirect: { name: 'home' }

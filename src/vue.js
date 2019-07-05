@@ -7,7 +7,10 @@ import globalMethods from './methods';
 Vue.config.performance = process.env.NODE_ENV !== 'production';
 Vue.config.productionTip = process.env.NODE_ENV !== 'production';
 
-window.vueApp = new Vue({
+/**
+ * main vue
+ */
+new Vue({
   router,
   store,
   render: h => h(App),
@@ -22,12 +25,21 @@ window.vueApp = new Vue({
       this.$store.commit('auth/saveToken', `${tokenType} ${accessToken}`);
     }
 
+    /**
+     * if user couldn't access to a page redirect to home page
+     */
     if (globalMethods.routerGuard(this.$route)) {
       router.push({ name: 'home' });
     }
 
+    /**
+     * fetch and check isLogin flag
+     */
     this.$store.dispatch('auth/checkToken');
 
+    /**
+     * if the user focus on each window
+     */
     window.onfocus = () => {
       this.$store.dispatch('auth/checkToken');
     };

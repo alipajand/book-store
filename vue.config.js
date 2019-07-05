@@ -3,21 +3,22 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   devServer: {
-    disableHostCheck: true,
-    proxy: 'http://hiring.bsup.tk/'
+    proxy: 'http://hiring.bsup.tk/api/'
   },
   filenameHashing: process.env.NODE_ENV !== 'production',
   productionSourceMap: process.env.NODE_ENV !== 'production',
   pages: {
     index: {
       entry: [
-        'src/mixins/index.js',
-        'src/filters/index.js',
         'src/main.js',
         'src/vue.js'
       ]
     }
   },
+
+  /**
+   * production configs
+   */
   configureWebpack: process.env.NODE_ENV === 'production' ? {
     optimization: {
       minimizer: [
@@ -40,6 +41,9 @@ module.exports = {
       ]
     },
     plugins: [
+      /**
+       * add gzip in deploy
+       */
       new CompressionWebpackPlugin({
         algorithm: 'gzip',
         test: new RegExp(

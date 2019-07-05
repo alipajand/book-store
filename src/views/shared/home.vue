@@ -39,8 +39,14 @@
     },
     methods: {
       signUp() {
+        /**
+         * get redirect ur based on location origin
+         * @type {string}
+         */
+        const redirectUri = window.location.origin;
+
         this.userWin = window.open('');
-        this.userWin.location.href = 'http://hiring.bsup.tk/oauth/authorize/?client_id=43&redirect_uri=http://localhost:8080&response_type=token';
+        this.userWin.location.href = `http://hiring.bsup.tk/oauth/authorize/?client_id=43&redirect_uri=${redirectUri}&response_type=token`;
         this.userWin.focus();
       }
     }

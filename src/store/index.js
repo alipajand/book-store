@@ -5,6 +5,10 @@ import user from './modules/user';
 import book from './modules/book';
 
 Vue.use(Vuex);
+
+/**
+ * import modules
+ */
 export default new Vuex.Store({
   modules: {
     auth,

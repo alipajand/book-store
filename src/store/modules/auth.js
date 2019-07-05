@@ -29,6 +29,11 @@ export default {
 
   // -----------------------------------------------------------------
   actions: {
+    /**
+     * check user's token
+     * @param commit
+     * @param dispatch
+     */
     checkToken({ commit, dispatch }) {
       if (globalMethods.getToken() && !globalMethods.isTokenExpire()) {
         commit('login');
@@ -36,10 +41,21 @@ export default {
         dispatch('resetToken');
       }
     },
+
+    /**
+     * logout processes
+     * @param dispatch
+     * @returns {Promise<void>}
+     */
     async logout({ dispatch }) {
       await services.shared.logout();
       dispatch('resetToken');
     },
+
+    /**
+     * remove all login and storages
+     * @param commit
+     */
     resetToken({ commit }) {
       commit('logout');
       localStorage.clear();

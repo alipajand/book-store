@@ -8,6 +8,9 @@
 <script type="text/javascript">
   export default {
     async created() {
+      /**
+       * fetch data
+       */
       await this.$store.dispatch('user/get');
     }
   };

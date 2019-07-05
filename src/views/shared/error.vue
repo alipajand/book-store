@@ -26,6 +26,9 @@
       };
     },
     created() {
+      /**
+       * find error type and messages
+       */
       const { id } = this.$route.params;
       if (id) {
         switch (Number(id)) {
