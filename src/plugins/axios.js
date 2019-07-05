@@ -2,7 +2,7 @@ import axios from 'axios';
 import globalMethods from '../methods';
 
 axios.defaults.headers.common['Accept'] = 'application/json';
-axios.defaults.baseURL = 'http://localhost:8080/';
+axios.defaults.baseURL = process.env.NODE_ENV !== 'production' ? 'http://hiring.bsup.tk/api/' : 'http://localhost:8080/';
 
 /**
  * Before send request
